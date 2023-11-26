@@ -2,3 +2,4 @@
 .godot/
 addons/
 .DS_Store
+*.import
