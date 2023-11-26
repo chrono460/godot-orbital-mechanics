@@ -1,17 +1,11 @@
 @tool
 class_name OrbitMotionPhysics extends Node3D
 
-var rd : OrbitTrajectoryRenderer
-var debug_mesh : MeshInstance3D
-
-enum INITIALIZE_METHOD {DEFAULT, RANDOM, ZERO = -1}
+@onready var rd : OrbitTrajectoryRenderer = $OrbitTrajectoryRenderer
 
 @export_category("Misc")
 @export var attach_point : Node3D
 @export_range(-1,1,1) var simulation_speed : float = 0.0
-@export \
-var initialize_method: INITIALIZE_METHOD = INITIALIZE_METHOD.DEFAULT
-@export var enable_debug_ball : bool = true
 
 @export_category("Physical Parameters")
 @export var pos : Vector3
@@ -68,19 +62,6 @@ func _update_orbit_params():
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_initialize_body()
-	if enable_debug_ball:
-		debug_mesh = MeshInstance3D.new()
-		debug_mesh.mesh = SphereMesh.new()
-		var material = StandardMaterial3D.new()
-		material.albedo_color = Color(\
-		 randf_range(0.1, 1.0)\
-		,randf_range(0.1, 1.0)\
-		,randf_range(0.1, 1.0))
-		debug_mesh.mesh.material = material
-		debug_mesh.tree_entered.connect(\
-		debug_mesh.set_owner.bind(self))
-		add_child(debug_mesh)
-		attach_point = debug_mesh
 		
 
 func _physics_process(delta):
@@ -97,17 +78,6 @@ func _physics_process(delta):
 func _apply_forces():
 	var new_acc = rd.standard_gravitational_param / r**3 *(-pos) # Gravity acceleration
 	return Vector3.ZERO if is_nan(new_acc.length()) else new_acc
-	
-func _enter_tree():
-	rd = OrbitTrajectoryRenderer.new()
-	rd.tree_entered.connect(rd.set_owner.bind(self))
-	add_child(rd)
-	
-func _exit_tree():
-	if rd:
-		rd.queue_free()
-	if debug_mesh:
-		debug_mesh.queue_free()
 
 # GDScript version of the orbitParameters function
 func orbitParameters(r, v, mu):
