@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxx677unigun1"]
+
+[ext_resource type="Script" path="res://OrbitMotionPhysics.gd" id="1_10k2m"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="OrbitMotionPhysics" type="Node3D" parent="." node_paths=PackedStringArray("attach_point")]
+script = ExtResource("1_10k2m")
+attach_point = NodePath("@MeshInstance3D@39645")
+simulation_speed = 1.0
+pos = Vector3(0.550137, -0.835109, -5.93207e-13)
+vel = Vector3(0.835031, 0.550151, 2.88346e-12)
+acc = Vector3(-0.550089, 0.835037, 5.93155e-13)
+trajectoryType = "elliptic"
+r = 1.00003
+theta = 2.04071
+t = 2.0406
+e_axis = Vector3(0.495471, 0.868624, 2.83957e-12)
+h_axis = Vector3(-2.08165e-12, -2.08164e-12, 1)
