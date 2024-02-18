@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://xbj2qmfpkkxu"]
+[gd_scene load_steps=2 format=3 uid="uid://xbj2qmfpkkxu"]
 
 [ext_resource type="Script" path="res://test_random_orbits.gd" id="1_xn16l"]
-[ext_resource type="Script" path="res://addons/orbit_camera/orbit_camera.gd" id="2_0p72a"]
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_xn16l")
@@ -10,9 +9,6 @@ animated = true
 [node name="Node3D" type="Node3D" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="Node3D"]
-script = ExtResource("2_0p72a")
-ROTATE_SPEED = 0.1
-ANCHOR_NODE_PATH = NodePath("..")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 light_color = Color(1, 0.733333, 0.647059, 1)
