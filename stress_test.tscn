@@ -9,6 +9,7 @@ animated = true
 [node name="Node3D" type="Node3D" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="Node3D"]
+transform = Transform3D(0.523062, 0.54124, -0.65838, 0, 0.77248, 0.635039, 0.852295, -0.332165, 0.404055, -19.3104, 20.1577, 11.4645)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 light_color = Color(1, 0.733333, 0.647059, 1)
